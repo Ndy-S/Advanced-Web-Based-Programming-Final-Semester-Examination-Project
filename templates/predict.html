@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Prediksi Kelulusan{% endblock %}
+
+{% block content %}
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Prediksi Kelulusan</h1>
+    </div>
+    <form action="{{url_for('prediksi')}}" method=post>
+        {% if pred == 0 %}
+        <tr>
+            <td><b><h2><marquee behavior="alternate" direction="right">Lulus</marquee></h2></b></td>
+        </tr>
+        {% elif pred == 1 %}    
+        <tr>
+            <td><b><h2><marquee behavior="alternate" direction="right">Tidak Lulus</marquee></h2></b></td>
+        </tr>
+        {% else %}    
+        <tr>
+            <td><b><h2><marquee behavior="alternate" direction="right">Sistem Error Hasil Tidak Ditemukan!</marquee></h2></b></td>
+        </tr>
+        {%endif%}
+        <a type="button" href="/prediksi" class="btn btn-secondary">Kembali</a>
+    </form>
+</main>
+{% endblock %}

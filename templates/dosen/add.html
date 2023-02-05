@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Tambah Dosen{% endblock %}
+
+{% block content %}
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Tambah Dosen</h1>
+    </div>
+    <form action="/dosen/tambah" method=post>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama:</label>
+            <input type="input" class="form-control" placeholder="Nama" name="nama" required>
+        </div>
+        <div class="mb-3">
+            <label for="univ" class="form-label">Universitas:</label>
+            <input type="input" class="form-control" placeholder="Universitas" name="univ" required>
+        </div>
+        <div class="mb-4">
+            <label for="jurusan" class="form-label">Jurusan:</label>
+            <select class="form-control" name="jurusan" required>
+                <option value="" selected>Jurusan</option>
+                {% for j in jurusan %}
+                <option value="{{ j[0] }}">{{ j[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <a type="button" href="/dosen" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+{% endblock %}

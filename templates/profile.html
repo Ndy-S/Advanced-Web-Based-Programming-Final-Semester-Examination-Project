@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit Profil{% endblock %}
+
+{% block content %}
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Edit Profil</h1>
+    </div>
+    <form action="/profile/{{ profile[0] }}" method=post>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama:</label>
+            <input type="text" class="form-control" placeholder="Nama" name="username" value="{{ profile[1] }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" placeholder="Universitas" name="email" value="{{ profile[2] }}" required>
+        </div>
+        <div class="mb-4">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" placeholder="Jurusan" name="password" value="{{ profile[3] }}" required>
+        </div>
+        <a type="button" href="/dosen" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</main>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block title %}Halaman Prediksi{% endblock %}
+
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissable fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Prediksi Kelulusan</h1>
+        </div>
+        <form action="/prediksi" method=post>
+            <div class="mb-3">
+                <label for="jurusan" class="form-label">Jurusan:</label>
+                <select class="form-control" name="jurusan" required>
+                    <option value="" selected>Jurusan</option>
+                    {% for j in jurusan %}
+                    <option value="{{ j[0] }}">{{ j[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="angkatan" class="form-label">Angkatan:</label>
+                <input type="number" class="form-control" placeholder="Angkatan" name="angkatan" min="2010" max="2023" required>
+            </div>
+            <div class="mb-3">
+                <label for="dosenp" class="form-label">Dosen Pembimbing:</label>
+                <select class="form-control" name="dosenp" required>
+                    <option value="" selected>Dosen Pembimbing</option>
+                    {% for d in dosen %}
+                    <option value="{{ d[0] }}">{{ d[2] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Kehadiran" class="form-label">Kehadiran (Pertemuan):</label>
+                <input type="number" class="form-control" placeholder="Kehadiran" name="kehadiran" min="0" max="16" required>
+            </div>
+            <div class="mb-3">
+                <label for="tugas" class="form-label">Nilai Tugas:</label>
+                <input type="number" class="form-control" placeholder="Nilai Tugas" name="tugas" min="0" max="100" required>
+            </div>
+            <div class="mb-3">
+                <label for="uts" class="form-label">Nilai UTS:</label>
+                <input type="number" class="form-control" placeholder="Nilai UTS" name="uts" min="0" max="100" required>
+            </div>
+            <div class="mb-4">
+                <label for="uas" class="form-label">Nilai UAS:</label>
+                <input type="number" class="form-control" placeholder="Nilai UAS" name="uas" min="0" max="100" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Prediksi Hasil</button>
+        </form>
+      </main>
+{% endblock %}

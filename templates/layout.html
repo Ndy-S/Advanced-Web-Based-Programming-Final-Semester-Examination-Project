@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+	<meta name="generator" content="Hugo 0.104.2">
+  	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous"/>
+	<link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='custom.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='dashboard.css') }}" rel="stylesheet">
+</head>
+<body>
+	
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  	<a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Project UAS PSIBWL</a>
+  	<button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+  	</button>
+	<button class="form-control-dark w-100 rounded-0 border-0 text-center"><a href="/profile/{{ profile[0] }}">Halo, <b>{{ profile[1] }}</b>&nbsp<span data-feather="user"></span></a></button>
+  	<div class="navbar-nav">
+		<div class="nav-item text-nowrap">
+			<a class="nav-link px-3 text-warning font-weight-bold" href="{{ url_for('logout') }}">Keluar</a>
+		</div>
+  	</div>
+</header>
+
+<div class="container-fluid">
+  	<div class="row">
+		<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+		  	<div class="position-sticky pt-3 sidebar-sticky">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link" href="/database">
+						  	<span data-feather="database" class="align-text-bottom"></span>
+						  	Database
+						</a>
+				  	</li>
+				  	<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="/dosen">
+							<span data-feather="gitlab" class="align-text-bottom"></span>
+						  	Data Dosen
+						</a>
+				  	</li>
+				  	<li class="nav-item">
+						<a class="nav-link" href="/mahasiswa">
+						  	<span data-feather="users" class="align-text-bottom"></span>
+						  	Data Mahasiswa
+						</a>
+				  	</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/jurusan">
+						  	<span data-feather="monitor" class="align-text-bottom"></span>
+						  	Data Jurusan
+						</a>
+				  	</li>
+				</ul>
+
+				<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+					<span>Data Science</span>
+					<span data-feather="bar-chart-2" class="align-text-bottom"></span>
+				</h6>
+				<ul class="nav flex-column mb-2">
+					<li class="nav-item">
+						<a class="nav-link" href="/nilai">
+							<span data-feather="file-text" class="align-text-bottom"></span>
+							Data Nilai Bahasa Inggris
+					 	 </a>
+					</li>
+				</ul>
+				<ul class="nav flex-column mb-2">
+					<li class="nav-item">
+						<a class="nav-link" href="/prediksi">
+							<span data-feather="activity" class="align-text-bottom"></span>
+							Prediksi Kelulusan
+					 	 </a>
+					</li>
+				</ul>
+
+		  	</div>
+		</nav>
+		{% block content %}{% endblock %}
+	</div>
+</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script src="{{ url_for('static', filename='bootstrap.blundle.min.js') }}"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+	<script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+</body>
+</html>

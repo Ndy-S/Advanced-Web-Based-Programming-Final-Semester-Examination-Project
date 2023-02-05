@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}Tambah Mahasiswa{% endblock %}
+
+{% block content %}
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Tambah Mahasiswa</h1>
+    </div>
+    <form action="/mahasiswa/tambah" method=post>
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama:</label>
+            <input type="input" class="form-control" placeholder="Nama" name="nama" required>
+        </div>
+        <div class="mb-3">
+            <label for="univ" class="form-label">Universitas:</label>
+            <input type="input" class="form-control" placeholder="Universitas" name="univ" required>
+        </div>
+        <div class="mb-3">
+            <label for="jurusan" class="form-label">Jurusan:</label>
+            <select class="form-control" name="jurusan" required>
+                <option value="" selected>Jurusan</option>
+                {% for j in jurusan %}
+                <option value="{{ j[0] }}">{{ j[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="angkatan" class="form-label">Angkatan:</label>
+            <input type="input" class="form-control" placeholder="Angkatan" name="angkatan" required>
+        </div>
+        <div class="mb-4">
+            <label for="dosenp" class="form-label">Dosen Pembimbing:</label>
+            <select class="form-control" name="dosenp" required>
+                <option value="" selected>Dosen Pembimbing</option>
+                {% for d in dosen %}
+                <option value="{{ d[0] }}">{{ d[2] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <a type="button" href="/mahasiswa" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+{% endblock %}

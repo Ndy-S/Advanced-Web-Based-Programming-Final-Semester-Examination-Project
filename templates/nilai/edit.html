@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}Edit Nilai Bahasa Inggris{% endblock %}
+
+{% block content %}
+<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Edit Nilai Bahasa Inggris</h1>
+    </div>
+    <form action="/nilai/edit/{{ nilai[0] }}" method=post>
+        <div class="mb-3">
+            <label for="mhs" class="form-label">Nama:</label>
+            <select class="form-control" name="mhs" disabled>
+                <option value="{{ nilai[1] }}" selected>{{ nilai[13] }}</option>
+            </select>
+            <input type="hidden" name="nama" value="{{ nilai[1] }}">
+        </div>
+        <div class="mb-3">
+            <label for="Kehadiran" class="form-label">Kehadiran (Pertemuan):</label>
+            <input type="number" class="form-control" placeholder="Kehadiran" name="kehadiran" value="{{ nilai[5] }}" min="0" max="16" required>
+        </div>
+        <div class="mb-3">
+            <label for="tugas" class="form-label">Nilai Tugas:</label>
+            <input type="number" class="form-control" placeholder="Nilai Tugas" name="tugas" value="{{ nilai[6] }}" min="0" max="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="uts" class="form-label">Nilai UTS:</label>
+            <input type="number" class="form-control" placeholder="Nilai UTS" name="uts" value="{{ nilai[7] }}" min="0" max="100" required>
+        </div>
+        <div class="mb-3">
+            <label for="uas" class="form-label">Nilai UAS:</label>
+            <input type="number" class="form-control" placeholder="Nilai UAS" name="uas" value="{{ nilai[8] }}" min="0" max="100" required>
+        </div>
+        <div class="mb-4">
+            <label for="hasil" class="form-label">Hasil:</label>
+            <select class="form-control" name="hasil" required>
+                {% if nilai[9] == 0 %}
+                <option value="0" selected>Lulus</option>
+                <option value="1">Tidak Lulus</option>
+                {% elif nilai[9] == 1 %}
+                <option value="0">Lulus</option>
+                <option value="1" selected>Tidak Lulus</option>
+                {% else %}
+                <option value="" selected>Hasil</option>
+                <option value="0">Lulus</option>
+                <option value="1">Tidak Lulus</option>
+                {% endif %}
+            </select>
+        </div>
+        <a type="button" href="/nilai" class="btn btn-secondary">Kembali</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</main>
+{% endblock %}

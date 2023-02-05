@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}Halaman Dosen{% endblock %}
+
+{% block content %}
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissable fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Data Dosen</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <a type="button" href="/dosen/tambah" class="btn btn-sm btn-outline-secondary">
+                    <span data-feather="plus-circle" class="align-text-bottom"></span>
+                    Tambah Dosen
+                </a>
+            </div>
+        </div>
+  
+        <div class="table-responsive">
+            <table class="table table-striped table-sm text-center">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama Dosen</th>
+                        <th scope="col">Universitas</th>
+                        <th scope="col">Jurusan</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in dosen %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ d[2] }}</td>
+                        <td>{{ d[3] }}</td>
+                        <td>{{ d[5] }}</td>
+                        <td> 
+                            <a href="/dosen/edit/{{ d[0] }}" class="btn btn-warning" role="button">Edit</a>
+                            <a href="/dosen/delete/{{ d[0] }}" class="btn btn-danger" role="button">Delete</a>
+                        </td> 
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+      </main>
+{% endblock %}
