@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
-app.secret_key = "dawdawdaww5fdsa_fdsakld8rweodfds"
+app.secret_key = "#"
 
 # mysql config
 app.config['MYSQL_HOST'] = 'localhost'
